@@ -94,7 +94,7 @@ class _HomeViewState extends State<HomeView> {
                 ),
                 IconButton(
                   onPressed: () {
-                    Get.to(CartView());
+                    Get.to(const CartView());
                   },
                   icon: Icon(
                     Icons.shopping_cart,
@@ -151,105 +151,120 @@ class _HomeViewState extends State<HomeView> {
             // Obx(() {
             //   return
             //
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  // for provider
-                  TabBarItem(
-                      screenWidth: screenWidth,
-                      title: 'Hot Coffee',
-                      isSelected: tabsProvider.currentIndex == 0,
-                      onTap: () {
-                        tabsProvider.changeIndex(0);
-                      }),
-                  TabBarItem(
-                      screenWidth: screenWidth,
-                      title: 'Cold Coffee',
-                      isSelected: tabsProvider.currentIndex == 1,
-                      onTap: () {
-                        tabsProvider.changeIndex(1);
-                      }),
-                  TabBarItem(
-                      screenWidth: screenWidth,
-                      title: 'Cappuccino',
-                      isSelected: tabsProvider.currentIndex == 2,
-                      onTap: () {
-                        tabsProvider.changeIndex(2);
-                      }),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // for provider
+                TabBarItem(
+                    screenWidth: screenWidth,
+                    title: 'Home',
+                    isSelected: tabsProvider.currentIndex == 0,
+                    onTap: () {
+                      tabsProvider.changeIndex(0);
+                    }),
+                TabBarItem(
+                    screenWidth: screenWidth,
+                    title: 'Cold Coffee',
+                    isSelected: tabsProvider.currentIndex == 1,
+                    onTap: () {
+                      tabsProvider.changeIndex(1);
+                    }),
+                TabBarItem(
+                    screenWidth: screenWidth,
+                    title: 'Cappuccino',
+                    isSelected: tabsProvider.currentIndex == 2,
+                    onTap: () {
+                      tabsProvider.changeIndex(2);
+                    }),
 
-                  // for getX
-                  // TabBarItem(
-                  //   screenWidth: screenWidth,
-                  //   title: 'Hot Coffee',
-                  //   isSelected: controller.currentIndex.value == 0,
-                  //   onTap: () {
-                  //     controller.changeIndex(val: 0);
-                  //   },
-                  // ),
-                  // TabBarItem(
-                  //   screenWidth: screenWidth,
-                  //   title: 'Cold Coffee',
-                  //   isSelected: controller.currentIndex.value == 1,
-                  //   onTap: () {
-                  //     controller.changeIndex(val: 1);
-                  //   },
-                  // ),
-                  // TabBarItem(
-                  //   screenWidth: screenWidth,
-                  //   title: 'Cappuccino',
-                  //   isSelected: controller.currentIndex.value == 2,
-                  //   onTap: () {
-                  //     controller.changeIndex(val: 2);
-                  //   },
-                  // ),
-                ],
-              ),
+                // for getX
+                // TabBarItem(
+                //   screenWidth: screenWidth,
+                //   title: 'Home',
+                //   isSelected: controller.currentIndex.value == 0,
+                //   onTap: () {
+                //     controller.changeIndex(val: 0);
+                //   },
+                // ),
+                // TabBarItem(
+                //   screenWidth: screenWidth,
+                //   title: 'Cold Coffee',
+                //   isSelected: controller.currentIndex.value == 1,
+                //   onTap: () {
+                //     controller.changeIndex(val: 1);
+                //   },
+                // ),
+                // TabBarItem(
+                //   screenWidth: screenWidth,
+                //   title: 'Cappuccino',
+                //   isSelected: controller.currentIndex.value == 2,
+                //   onTap: () {
+                //     controller.changeIndex(val: 2);
+                //   },
+                // ),
+              ],
+            ),
             // for get x
-          //  }),
+            //  }),
             SizedBox(
               height: screenHeight * 0.02,
             ),
-            Expanded(
-              child: GridView.builder(
-                  itemCount: fakeData['data']?.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: screenHeight * 0.02,
-                      crossAxisSpacing: screenWidth * 0.05,
-                      childAspectRatio: 0.7),
-                  itemBuilder: (context, index) {
-                    return CoffeeItem(
-                      screenWidth: screenWidth,
-                      screenHeight: screenHeight,
-                      onTap: () {
-                        Get.to(
-                          CoffeeView(
-                            coffee: Coffee(
-                              title:
-                                  fakeData['data']![index]['title'] as String,
-                              image:
-                                  fakeData['data']![index]['image'] as String,
-                              description: fakeData['data']![index]
-                                  ['description'] as String,
-                              subTitle: fakeData['data']![index]['subTitle']
-                                  as String,
-                              price:
-                                  fakeData['data']![index]['price'] as String,
-                              quantity:
-                                  fakeData['data']![index]['quantity'] as int,
-                            ),
-                          ),
-                        );
-                      },
-                      image: fakeData['data']![index]['image'] as String,
-                      title: fakeData['data']![index]['title'] as String,
-                      description:
-                          fakeData['data']![index]['description'] as String,
-                      price: fakeData['data']![index]['price'] as String,
-                      subTitle: fakeData['data']![index]['subTitle'] as String,
-                    );
-                  }),
-            ),
+            tabsProvider.currentIndex == 0
+                ? Expanded(
+                    child: GridView.builder(
+                        itemCount: fakeData['data']?.length,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            mainAxisSpacing: screenHeight * 0.02,
+                            crossAxisSpacing: screenWidth * 0.05,
+                            childAspectRatio: 0.7),
+                        itemBuilder: (context, index) {
+                          return CoffeeItem(
+                            screenWidth: screenWidth,
+                            screenHeight: screenHeight,
+                            onTap: () {
+                              Get.to(
+                                CoffeeView(
+                                  coffee: Coffee(
+                                    title: fakeData['data']![index]['title']
+                                        as String,
+                                    image: fakeData['data']![index]['image']
+                                        as String,
+                                    description: fakeData['data']![index]
+                                        ['description'] as String,
+                                    subTitle: fakeData['data']![index]
+                                        ['subTitle'] as String,
+                                    price: fakeData['data']![index]['price']
+                                        as String,
+                                    quantity: fakeData['data']![index]
+                                        ['quantity'] as int,
+                                  ),
+                                ),
+                              );
+                            },
+                            image: fakeData['data']![index]['image'] as String,
+                            title: fakeData['data']![index]['title'] as String,
+                            description: fakeData['data']![index]['description']
+                                as String,
+                            price: fakeData['data']![index]['price'] as String,
+                            subTitle:
+                                fakeData['data']![index]['subTitle'] as String,
+                          );
+                        }),
+                  )
+                : tabsProvider.currentIndex == 1
+                    ? const Center(
+                        child: Text(
+                          'Colde Coffee',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      )
+                    : const Center(
+                        child: Text(
+                          'Cappuccino',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
           ],
         ),
       ),
